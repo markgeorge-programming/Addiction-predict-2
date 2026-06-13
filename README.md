@@ -13,7 +13,7 @@ Features
 
 ## 🧠 Model Inputs
 
-The model expects 21 numerical features:
+The model expects 6numerical features:
 - Age
 - Gender (0 = Male, 1 = Female)
 - School Grade
