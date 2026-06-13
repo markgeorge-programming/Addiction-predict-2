@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addiction Prediction MVP</title>
+    <style>
+        /* The Egoist Dark Mode Architecture */
+        body {
+            background-color: #0d1117; /* GitHub Dark Mode Base */
+            color: #c9d1d9;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .matrix-container {
+            background: #161b22;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.8);
+            width: 100%;
+            max-width: 450px;
+            border: 1px solid #30363d;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 25px;
+            color: #58a6ff; /* sleek tech blue */
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #8b949e;
+        }
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #30363d;
+            border-radius: 6px;
+            background: #0d1117;
+            color: #ffffff;
+            box-sizing: border-box;
+            transition: all 0.3s ease;
+        }
+        input:focus {
+            outline: none;
+            border-color: #58a6ff;
+            box-shadow: 0 0 8px rgba(88, 166, 255, 0.3);
+        }
+        .deploy-btn {
+            width: 100%;
+            padding: 14px;
+            background: #238636; /* Success Green */
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .deploy-btn:hover {
+            background: #2ea043;
+            box-shadow: 0 0 15px rgba(46, 160, 67, 0.4);
+        }
+        .result-matrix {
+            margin-top: 25px;
+            padding: 20px;
+            background: rgba(248, 81, 73, 0.1);
+            border-left: 4px solid #f85149;
+            border-radius: 4px;
+            text-align: center;
+            animation: pulse 2s infinite;
+        }
+        .result-matrix h3 {
+            margin: 0;
+            color: #f85149;
+            font-size: 1.8rem;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(248, 81, 73, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(248, 81, 73, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(248, 81, 73, 0); }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="matrix-container">
+        <h1>Addiction Core Analyzer</h1>
+        <form method="POST">
+
+            <div class="form-group">
+                <label for="Daily_Usage_Hours">Daily Screen Time (Hours)</label>
+                <input type="number" name="Daily_Usage_Hours" step="any" id="Daily_Usage_Hours" placeholder="e.g., 6.5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Phone_Checks_Per_Day">Phone Checks Per Day</label>
+                <input type="number" name="Phone_Checks_Per_Day" step="any" id="Phone_Checks_Per_Day" placeholder="e.g., 85" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Apps_Used_Daily">Apps Used Daily</label>
+                <input type="number" name="Apps_Used_Daily" step="any" id="Apps_Used_Daily" placeholder="e.g., 12" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Time_on_Social_Media">Time on Social Media (Hours)</label>
+                <input type="number" name="Time_on_Social_Media" step="any" id="Time_on_Social_Media" placeholder="e.g., 3.2" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Time_on_Gaming">Time on Gaming (Hours)</label>
+                <input type="number" name="Time_on_Gaming" step="any" id="Time_on_Gaming" placeholder="e.g., 1.5" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Sleep_Hours">Sleep Hours</label>
+                <input type="number" name="Sleep_Hours" step="any" id="Sleep_Hours" placeholder="e.g., 5.5" required>
+            </div>
+
+            <button type="submit" class="deploy-btn">Run Prediction Matrix</button>
+        </form>
+
+        {% if prediction is not none %}
+            <div class="result-matrix">
+                <h3>{{ prediction }}% ADDICTED</h3>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
